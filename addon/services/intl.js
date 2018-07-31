@@ -125,10 +125,10 @@ export default Service.extend(Evented, {
     }
 
     while (!msg && defaults.length) {
-      msg = this.lookup(defaults.shift(), options.locale, assign({}, options, { resilient: defaults.length > 0 }));
+      msg = this.lookup(defaults.shift(), options.locale, assign({ resilient: defaults.length > 0 }, options));
     }
 
-    return this.formatMessage(msg, options);
+    return msg ? this.formatMessage(msg, options) : '';
   },
 
   /** @public **/
